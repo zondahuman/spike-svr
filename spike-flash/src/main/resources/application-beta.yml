@@ -1,0 +1,35 @@
+server:
+      port: 8099  #配置端口
+      address : localhost
+      session-timeout: 30
+      tomcat.max-threads: 0
+      tomcat.uri-encoding: UTF-8
+
+
+# LOGGING  INFO  DEBUG
+logging:
+        level:
+              root: INFO
+              com:
+                  abin:
+                        lee:
+                            spike:
+                                      flash: INFO
+
+
+
+# true false
+debug: false
+
+
+
+
+
+
+
+
+
+
+
+
+
