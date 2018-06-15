@@ -13,4 +13,11 @@ public interface SpikeFlashService {
 
     Integer flashByShaScript(String listName, String keyName) throws InterruptedException ;
 
+    Integer limitFlow(String keyName, String limit, String limitTime) ;
+
+    void limitFlowBatch(String keyName, String limit, String limitTime) throws InterruptedException;
+
+    void limitTrafficBatch(String keyName, String limit, String limitTime) throws InterruptedException;
+
+
 }

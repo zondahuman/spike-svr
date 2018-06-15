@@ -77,4 +77,47 @@ public class SpikeFlashController {
     }
 
 
+    @RequestMapping(value = "/limitFlow")
+    @ResponseBody
+    public String limitFlow(String keyName, String limit, String limitTime) {
+        String result = "FAILURE";
+        try {
+            this.spikeFlashService.limitFlow(keyName, limit, limitTime);
+            result = "SUCCESS";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    @RequestMapping(value = "/limitFlowBatch")
+    @ResponseBody
+    public String limitFlowBatch(String keyName, String limit, String limitTime) {
+        String result = "FAILURE";
+        try {
+            this.spikeFlashService.limitFlowBatch(keyName, limit, limitTime);
+            result = "SUCCESS";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    @RequestMapping(value = "/limitTrafficBatch")
+    @ResponseBody
+    public String limitTrafficBatch(String keyName, String limit, String limitTime) {
+        String result = "FAILURE";
+        try {
+            this.spikeFlashService.limitTrafficBatch(keyName, limit, limitTime);
+            result = "SUCCESS";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+
 }
