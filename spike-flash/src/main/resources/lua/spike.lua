@@ -1,10 +1,4 @@
 --
--- Created by IntelliJ IDEA.
--- User: lisubin
--- Date: 2017/9/1
--- Time: 11:21
--- To change this template use File | Settings | File Templates.
---
 
 local totalLen = redis.call('llen', KEYS[1]) --查询队列的长度
 
