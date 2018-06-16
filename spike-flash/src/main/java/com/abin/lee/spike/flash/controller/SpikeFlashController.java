@@ -34,6 +34,21 @@ public class SpikeFlashController {
     }
 
 
+
+    @RequestMapping(value = "/flashByLua")
+    @ResponseBody
+    public String flashByLua(String listName, String keyName) {
+        String result = "FAILURE";
+        try {
+            this.spikeFlashService.flashByLua(listName, keyName);
+            result = "SUCCESS";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
     @RequestMapping(value = "/flashByScript")
     @ResponseBody
     public String flashByScript(String listName, String keyName) {

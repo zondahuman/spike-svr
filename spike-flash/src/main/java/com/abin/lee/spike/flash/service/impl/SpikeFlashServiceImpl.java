@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -49,6 +50,30 @@ public class SpikeFlashServiceImpl implements SpikeFlashService {
         }
     }
 
+    @Override
+    public void flashByLua(String listName, String keyName) {
+        while (true) {
+            Jedis redis = jedis.getJedis();
+            String spikePath = this.getClass().getClassLoader().getResource(SpikeLua.spikeLuaPath).getPath();
+
+            List<String> keys = Collections.singletonList(listName);
+            keyName = (int) (Math.random() * 10000000L) + "";
+            List<String> argvs = Arrays.asList(keyName);
+            Object object = redis.eval(spikePath, keys, argvs);
+
+            if (object != null) {
+                System.out.println("object : " + object);
+            } else {
+                //已经取完了
+                Long len = redis.llen(listName);
+                if (len > 5) {
+                    log.info("current len= " + len);
+                    break;
+                }
+            }
+            jedis.returnResource(redis);
+        }
+    }
 
     @Override
     public void flashByScript(String listName, String keyName) {
@@ -210,7 +235,7 @@ public class SpikeFlashServiceImpl implements SpikeFlashService {
                     while (true) {
                         Jedis redis = jedis.getJedis();
                         String sha = redis.scriptLoad(SpikeLua.limitTraffic);
-                        String keyNames = System.currentTimeMillis()/1000 + "";
+                        String keyNames = System.currentTimeMillis() / 1000 + "";
                         List<String> keys = Collections.singletonList(keyNames);
                         List<String> argvs = Arrays.asList(limit, limitTime);
                         Object object = redis.evalsha(sha, keys, argvs);
@@ -234,7 +259,6 @@ public class SpikeFlashServiceImpl implements SpikeFlashService {
         }
         latch.await();
     }
-
 
 
 }

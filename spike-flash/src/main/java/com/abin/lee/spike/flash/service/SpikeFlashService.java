@@ -7,6 +7,8 @@ public interface SpikeFlashService {
 
     void flash(String listName, String keyName);
 
+    void flashByLua(String listName, String keyName);
+
     void flashByScript(String listName, String keyName);
 
     void flashBySha(String listName, String keyName) throws InterruptedException ;

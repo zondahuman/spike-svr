@@ -5,6 +5,9 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import java.io.InputStream;
+import java.net.URL;
+
 /**
  * lua+redis 入队操作，；lua保证redis操作的原子性
  */
@@ -66,5 +69,28 @@ public class SpikeLua {
             "    redis.call(\"EXPIRE\", key, expire_time)\n" +
             "    return 1\n" +
             "end";
+
+
+    public static String spikeLuaPath = "lua/spike.lua";
+
+
+    public static String getPath(String param){
+        String path = SpikeLua.class.getClassLoader().getResource(param).getPath();
+//        String path = this.getClass().getClassLoader().getResource(spikeLua).getPath();
+        return path;
+    }
+
+    public void min(){
+        String spike = SpikeLua.class.getClassLoader().getResource(spikeLuaPath).getPath();
+        String spike2 = this.getClass().getClassLoader().getResource(spikeLuaPath).getPath();
+        URL spike1 = this.getClass().getClassLoader().getResource("/");
+        System.out.println(spike);
+        System.out.println(spike1);
+        System.out.println(spike2);
+    }
+
+    public static void main(String[] args) {
+        new SpikeLua().min();
+    }
 
 }
