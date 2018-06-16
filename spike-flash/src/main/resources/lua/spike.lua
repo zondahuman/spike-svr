@@ -1,5 +1,3 @@
---
-
 local totalLen = redis.call('llen', KEYS[1]) --查询队列的长度
 
 if totalLen >= 5 then
@@ -13,6 +11,3 @@ if currentLen >= 5 then
 end
 
 return 1
-
-
-

@@ -22,7 +22,7 @@ import java.util.List;
 public class FlashByLuaTest {
 
     //    private static final String httpURL = "http://localhost:8099/spike/flashByLua";
-    private static final String httpURL = "http://localhost:8080/spike/flashByLua";
+    private static final String httpURL = "http://localhost:8099/spike/flashByLua";
 
     @Test
     public void testFlash() {
