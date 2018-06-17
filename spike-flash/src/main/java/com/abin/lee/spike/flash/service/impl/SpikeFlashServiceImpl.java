@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
@@ -51,18 +52,23 @@ public class SpikeFlashServiceImpl implements SpikeFlashService {
     }
 
     @Override
-    public void flashByLua(String listName, String keyName) {
+    public void flashByLua(String listName, String keyName) throws IOException {
         while (true) {
             Jedis redis = jedis.getJedis();
             String spikePath = this.getClass().getClassLoader().getResource(SpikeLua.spikeLuaPath).getPath();
-
+            String scriptLua = SpikeLua.loadScript(SpikeLua.spikeLuaPath);
             List<String> keys = Collections.singletonList(listName);
             keyName = (int) (Math.random() * 10000000L) + "";
-            List<String> argvs = Arrays.asList(keyName);
-            Object object = redis.eval(spikePath, keys, argvs);
-
+            List<String> argvs = Collections.singletonList(keyName);
+            Object object = redis.eval(scriptLua, keys, argvs);
             if (object != null) {
                 System.out.println("object : " + object);
+                //已经取完了
+                Long len = redis.llen(listName);
+                if (len > 5) {
+                    log.info("current len= " + len);
+                    break;
+                }
             } else {
                 //已经取完了
                 Long len = redis.llen(listName);

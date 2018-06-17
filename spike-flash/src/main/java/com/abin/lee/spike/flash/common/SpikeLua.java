@@ -1,11 +1,16 @@
 package com.abin.lee.spike.flash.common;
 
+import com.google.common.io.CharStreams;
 import org.springframework.stereotype.Component;
+import redis.clients.jedis.Client;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URL;
 
 /**
@@ -71,7 +76,15 @@ public class SpikeLua {
             "end";
 
 
+//    public static String spikeLuaPath = "limit/spike.lua";
     public static String spikeLuaPath = "lua/spike.lua";
+
+
+    // 加载Lua代码
+    public static String loadScript(String fileName) throws IOException {
+        Reader reader = new InputStreamReader(Client.class.getClassLoader().getResourceAsStream(fileName));
+        return CharStreams.toString(reader);
+    }
 
 
     public static String getPath(String param){
