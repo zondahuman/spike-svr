@@ -31,7 +31,7 @@ public class CuratorUtil {
 
     public void put(String queueName, String message) throws Exception {
         SimpleDistributedQueue queue = new SimpleDistributedQueue(curator, queueName);
-        queue.offer(("qn-" + message).getBytes());
+        queue.offer(message.getBytes());
     }
 
     public String get(String queueName) throws Exception {
@@ -41,6 +41,13 @@ public class CuratorUtil {
         return middle ;
     }
 
+    public void create(String queueName) throws Exception {
+        if (curator.checkExists().forPath(queueName) != null) {
+            curator.delete().deletingChildrenIfNeeded().forPath(queueName);
+        }
+    }
+
+    
 
 //    public boolean offer(byte[] data) throws Exception {
 //        String thisPath = ZKPaths.makePath(this.path, "qn-");
