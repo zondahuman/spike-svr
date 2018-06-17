@@ -2,8 +2,6 @@ package com.abin.lee.spike.flash.service.impl;
 
 import com.abin.lee.spike.flash.common.CuratorUtil;
 import com.abin.lee.spike.flash.service.DistributeQueueService;
-import org.apache.curator.framework.recipes.queue.DistributedQueue;
-import org.apache.curator.framework.recipes.queue.QueueBuilder;
 
 import javax.annotation.Resource;
 
@@ -13,7 +11,7 @@ import javax.annotation.Resource;
 public class DistributeQueueServiceImpl implements DistributeQueueService {
 
     @Resource
-    CuratorUtil curator ;
+    CuratorUtil curator;
 
     @Override
     public void redisQueue(String message) {
@@ -30,7 +28,6 @@ public class DistributeQueueServiceImpl implements DistributeQueueService {
         String result = curator.get(queueName);
         return result;
     }
-
 
 
 }
