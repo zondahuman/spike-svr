@@ -25,7 +25,7 @@ public class FlashByLuaTest {
     private static final String httpURL = "http://localhost:8099/spike/flashByLua";
 
     @Test
-    public void testFlash() {
+    public void testFlashByLua() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
