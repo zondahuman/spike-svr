@@ -16,3 +16,12 @@ redis-cli.exe --eval D:\SystemFile\GithubWorkspace\spike-svr\spike-flash\target\
 redis-cli.exe --eval D:\SystemFile\GithubWorkspace\spike-svr\spike-flash\src\main\resources\lua\spike.lua second, 1000
 
 
+# Distributed Queue :
+http://curator.apache.org/curator-recipes/index.html
+
+
+
+
+
+
+
