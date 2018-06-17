@@ -1,4 +1,7 @@
 --
+-- Created by IntelliJ IDEA.
+-- User: lee
+--
 
 local key = "rate.limit:" .. KEYS[1]
 local limit = tonumber(ARGV[1])
