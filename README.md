@@ -20,7 +20,8 @@ redis-cli.exe --eval D:\SystemFile\GithubWorkspace\spike-svr\spike-flash\src\mai
 http://curator.apache.org/curator-recipes/index.html
 
 
-
+Distributed Queue(分布式队列):
+https://www.hifreud.com/2017/01/18/zookeeper-16-java-api-curator-07-queue/#distributed-queue%E5%88%86%E5%B8%83%E5%BC%8F%E9%98%9F%E5%88%97
 
 
 
