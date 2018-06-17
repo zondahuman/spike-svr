@@ -55,7 +55,7 @@ public class SpikeFlashServiceImpl implements SpikeFlashService {
     public void flashByLua(String listName, String keyName) throws IOException {
         while (true) {
             Jedis redis = jedis.getJedis();
-            String spikePath = this.getClass().getClassLoader().getResource(SpikeLua.spikeLuaPath).getPath();
+//            String spikePath = this.getClass().getClassLoader().getResource(SpikeLua.spikeLuaPath).getPath();
             String scriptLua = SpikeLua.loadScript(SpikeLua.spikeLuaPath);
             List<String> keys = Collections.singletonList(listName);
             keyName = (int) (Math.random() * 10000000L) + "";
