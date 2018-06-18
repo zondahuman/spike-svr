@@ -5,7 +5,7 @@ package com.abin.lee.spike.flash.service;
  */
 public interface DistributeLockService {
 
-    Long createZkDisLock(String zkPath) throws Exception;
+    void createZkDisLock(String zkPath) throws Exception;
 
 
 

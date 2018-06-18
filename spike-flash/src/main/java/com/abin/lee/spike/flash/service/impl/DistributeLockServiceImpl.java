@@ -20,14 +20,18 @@ import java.util.List;
 public class DistributeLockServiceImpl implements DistributeLockService {
 
     @Resource
-    LockUtil lock;
+    CuratorDisLockUtil disLock;
     @Resource
     RedisUtil jedis;
 
 
     @Override
-    public Long createZkDisLock(String zkPath) throws Exception {
-        lock.client.create().creatingParentsIfNeeded().forPath("");
-        return null;
+    public void createZkDisLock(String zkPath) throws Exception {
+      disLock.acquire();
     }
+
+
+
+
+
 }
