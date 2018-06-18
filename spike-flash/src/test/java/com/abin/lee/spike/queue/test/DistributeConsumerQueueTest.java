@@ -23,7 +23,7 @@ public class DistributeConsumerQueueTest {
     private static final String httpURL = "http://localhost:8099/dqueue/zkGetQueue";
 
     @Test
-    public void testDistributeProducerQueue() {
+    public void testDistributeConsumerQueue() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
