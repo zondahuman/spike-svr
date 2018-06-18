@@ -3,7 +3,6 @@ package com.abin.lee.spike.flash.service.impl;
 import com.abin.lee.spike.flash.common.CuratorUtil;
 import com.abin.lee.spike.flash.common.DistributeLua;
 import com.abin.lee.spike.flash.common.RedisUtil;
-import com.abin.lee.spike.flash.common.SpikeLua;
 import com.abin.lee.spike.flash.service.DistributeQueueService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,7 +35,7 @@ public class DistributeQueueServiceImpl implements DistributeQueueService {
 
         if (object != null) {
             System.out.println("object : " + object);
-            return (Long)object;
+            return (Long) object;
         } else {
             //已经取完了
             Long len = redis.llen(queueName);
@@ -51,8 +50,8 @@ public class DistributeQueueServiceImpl implements DistributeQueueService {
     @Override
     public String redisGetQueue(String queueName, String destinationQueueName) throws Exception {
         Jedis redis = jedis.getJedis();
-        String result = redis.brpoplpush(queueName, destinationQueueName, 6000) ;
-        return result ;
+        String result = redis.brpoplpush(queueName, destinationQueueName, 6000);
+        return result;
     }
 
     @Override
