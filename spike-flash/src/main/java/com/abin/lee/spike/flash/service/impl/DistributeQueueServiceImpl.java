@@ -2,6 +2,7 @@ package com.abin.lee.spike.flash.service.impl;
 
 import com.abin.lee.spike.flash.common.CuratorUtil;
 import com.abin.lee.spike.flash.common.DistributeLua;
+import com.abin.lee.spike.flash.common.DistributeQueueUtil;
 import com.abin.lee.spike.flash.common.RedisUtil;
 import com.abin.lee.spike.flash.service.DistributeQueueService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,8 @@ public class DistributeQueueServiceImpl implements DistributeQueueService {
 
     @Resource
     CuratorUtil curator;
+    @Resource
+    DistributeQueueUtil client;
     @Resource
     RedisUtil jedis;
 
@@ -64,6 +67,22 @@ public class DistributeQueueServiceImpl implements DistributeQueueService {
         String result = curator.get(queueName);
         return result;
     }
+
+    @Override
+    public void zkPutDeepQueue(String queueName, String message) throws Exception {
+        client.put(message);
+    }
+
+    @Override
+    public String zkGetDeepQueue(String queueName) throws Exception {
+
+        return null;
+    }
+
+
+
+
+
 
 
 }

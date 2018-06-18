@@ -49,6 +49,35 @@ public class DistributeQueueController {
     }
 
 
+    @RequestMapping(value = "/zkPutDeepQueue")
+    @ResponseBody
+    public String zkPutDeepQueue(String queueName, String message) {
+        String result = "FAILURE";
+        try {
+            this.distributeQueueService.zkPutDeepQueue(queueName, message);
+            result = "SUCCESS";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    @RequestMapping(value = "/zkGetDeepQueue")
+    @ResponseBody
+    public String zkGetDeepQueue(String queueName) {
+        String result = "";
+        try {
+            result = this.distributeQueueService.zkGetDeepQueue(queueName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+
+
     @RequestMapping(value = "/redisPutQueue")
     @ResponseBody
     public String redisPutQueue(String queueName, String message) {

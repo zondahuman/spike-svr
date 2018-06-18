@@ -14,7 +14,9 @@ public interface DistributeQueueService {
     String zkGetQueue(String queueName) throws Exception ;
 
 
+    void zkPutDeepQueue(String queueName, String message) throws Exception ;
 
+    String zkGetDeepQueue(String queueName) throws Exception ;
 
 
 

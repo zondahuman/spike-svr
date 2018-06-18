@@ -17,17 +17,19 @@ import java.util.List;
 /**
  * Created by abin on 2018/6/17.
  */
-public class DistributeConsumerQueueTest {
+public class DistributeZkProducerQueueTest {
 
-    //    private static final String httpURL = "http://localhost:8099/dqueue/zkGetQueue";
-    private static final String httpURL = "http://localhost:8099/dqueue/zkGetQueue";
+    //    private static final String httpURL = "http://localhost:8099/dqueue/zkPutQueue";
+    private static final String httpURL = "http://localhost:8099/dqueue/zkPutQueue";
 
     @Test
-    public void testDistributeConsumerQueue() {
+    public void testDistributeProducerQueue() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
             nvps.add(new BasicNameValuePair("queueName", "/second"));
+            int id = (int)(Math.random()*10000000L);
+            nvps.add(new BasicNameValuePair("message", "" + id));
             HttpPost httpPost = new HttpPost(httpURL);
 //            httpPost.setHeader("Cookie", getCookie());
 //            httpPost.setHeader("Cookie", "JSESSIONID=7588C522A6900BFD581AA18FDA64D347");
