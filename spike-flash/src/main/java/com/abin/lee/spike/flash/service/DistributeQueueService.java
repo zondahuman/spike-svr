@@ -5,7 +5,9 @@ package com.abin.lee.spike.flash.service;
  */
 public interface DistributeQueueService {
 
-    void redisQueue(String message);
+    Long redisPutQueue(String queueName, String keyName) ;
+
+    String redisGetQueue(String queueName, String destinationQueueName) throws Exception ;
 
     void zkPutQueue(String queueName, String message) throws Exception ;
 

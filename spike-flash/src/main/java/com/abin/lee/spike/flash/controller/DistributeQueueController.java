@@ -49,4 +49,33 @@ public class DistributeQueueController {
     }
 
 
+    @RequestMapping(value = "/redisPutQueue")
+    @ResponseBody
+    public String redisPutQueue(String queueName, String message) {
+        String result = "FAILURE";
+        try {
+            this.distributeQueueService.redisPutQueue(queueName, message);
+            result = "SUCCESS";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    @RequestMapping(value = "/redisGetQueue")
+    @ResponseBody
+    public String redisGetQueue(String queueName, String destinationQueueName) {
+        String result = "";
+        try {
+            result = this.distributeQueueService.redisGetQueue(queueName, destinationQueueName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+
+
 }
