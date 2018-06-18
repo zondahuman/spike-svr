@@ -2,12 +2,14 @@ package com.abin.lee.spike.flash.service.impl;
 
 import com.abin.lee.spike.flash.common.CuratorUtil;
 import com.abin.lee.spike.flash.service.DistributeQueueService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 /**
  * Created by abin on 2018/6/17.
  */
+@Service
 public class DistributeQueueServiceImpl implements DistributeQueueService {
 
     @Resource

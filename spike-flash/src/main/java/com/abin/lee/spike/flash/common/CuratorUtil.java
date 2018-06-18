@@ -24,9 +24,9 @@ public class CuratorUtil {
     public void previous(){
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
         // Fluent风格创建
-        CuratorFramework curatorFramework = CuratorFrameworkFactory.builder().connectString("localhost:2181")
+        curator = CuratorFrameworkFactory.builder().connectString("localhost:2181")
                 .sessionTimeoutMs(5 * 1000).connectionTimeoutMs(3 * 1000).retryPolicy(retryPolicy).build();
-        curatorFramework.start();
+        curator.start();
     }
 
     public void put(String queueName, String message) throws Exception {
@@ -47,7 +47,7 @@ public class CuratorUtil {
         }
     }
 
-    
+
 
 //    public boolean offer(byte[] data) throws Exception {
 //        String thisPath = ZKPaths.makePath(this.path, "qn-");
