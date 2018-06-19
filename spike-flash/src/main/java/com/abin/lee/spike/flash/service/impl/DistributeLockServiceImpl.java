@@ -22,13 +22,30 @@ public class DistributeLockServiceImpl implements DistributeLockService {
     @Resource
     CuratorDisLockUtil disLock;
     @Resource
-    RedisUtil jedis;
+    DistributedRedisLockUtil jedis;
 
 
     @Override
     public void createZkDisLock(String zkPath) throws Exception {
       disLock.acquire();
     }
+
+    @Override
+    public void releaseZkDisLock(String zkPath) throws Exception {
+        disLock.release();
+    }
+
+    @Override
+    public void createRedisDisLock(String lockName) throws Exception {
+        jedis.lockWithTimeout(lockName, 60000);
+    }
+
+    @Override
+    public void releaseRedisDisLock(String lockName) throws Exception {
+        jedis.releaseLock(lockName);
+    }
+
+
 
 
 
