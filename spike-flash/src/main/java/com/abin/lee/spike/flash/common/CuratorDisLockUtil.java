@@ -16,7 +16,6 @@ import javax.annotation.PostConstruct;
 public class CuratorDisLockUtil {
 
     public CuratorFramework client = null ;
-    public InterProcessMutex lock =  null ;
 
     @PostConstruct
     public void previous(){
@@ -25,15 +24,16 @@ public class CuratorDisLockUtil {
         client = CuratorFrameworkFactory.builder().connectString("localhost:2181")
                 .sessionTimeoutMs(5 * 1000).connectionTimeoutMs(3 * 1000).retryPolicy(retryPolicy).build();
         client.start();
-        lock = new InterProcessMutex(client, "/super");
     }
 
 
-    public void acquire() throws Exception {
+    public InterProcessMutex acquire(String lockPath) throws Exception {
+        InterProcessMutex lock =  new InterProcessMutex(client, lockPath);
         lock.acquire();
+        return lock;
     }
 
-    public void release() throws Exception {
+    public void release(InterProcessMutex lock) throws Exception {
         lock.release();
     }
 

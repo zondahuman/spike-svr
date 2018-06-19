@@ -4,6 +4,7 @@ import com.abin.lee.spike.flash.common.*;
 import com.abin.lee.spike.flash.service.DistributeLockService;
 import com.abin.lee.spike.flash.service.DistributeQueueService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
@@ -26,13 +27,14 @@ public class DistributeLockServiceImpl implements DistributeLockService {
 
 
     @Override
-    public void createZkDisLock(String zkPath) throws Exception {
-      disLock.acquire();
+    public InterProcessMutex createZkDisLock(String lockPath) throws Exception {
+        InterProcessMutex lock = disLock.acquire(lockPath);
+        return lock;
     }
 
     @Override
-    public void releaseZkDisLock(String zkPath) throws Exception {
-        disLock.release();
+    public void releaseZkDisLock(InterProcessMutex lock) throws Exception {
+        disLock.release(lock);
     }
 
     @Override
