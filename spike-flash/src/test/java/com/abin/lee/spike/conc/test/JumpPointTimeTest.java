@@ -24,7 +24,7 @@ public class JumpPointTimeTest {
         taskVo.finish = false ;
         while(true){
             if(taskVo.finish == false){
-                System.out.println(DateUtil.getYMDHMSTime() + "   , threadTime=" + threadTime + "   , threadName=" + Thread.currentThread().getId());
+                System.out.println(DateUtil.getYMDHMSTime() + " , threadTime=" + threadTime + "   , basic=" + basic + "   , threadName=" + Thread.currentThread().getId());
                 Long sleepTime = algo(threadTime, basic);
                 Thread.sleep(sleepTime);
                 System.out.println(DateUtil.getYMDHMSTime() + "   , threadTime=" + threadTime  + "   , sleepTime=" + sleepTime + "   , threadName=" + Thread.currentThread().getId());
@@ -36,7 +36,7 @@ public class JumpPointTimeTest {
                     basic ++ ;
                 }
             }else{
-                System.out.println("-----------------------------------" + DateUtil.getYMDHMSTime());
+                System.out.println(DateUtil.getYMDHMSTime() + "   , basic=" + basic + "   , threadName=" + Thread.currentThread().getId());
                 break;
             }
 
