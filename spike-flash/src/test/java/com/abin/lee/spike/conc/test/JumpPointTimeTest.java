@@ -36,6 +36,7 @@ public class JumpPointTimeTest {
                     basic ++ ;
                 }
             }else{
+                basic = 1;
                 System.out.println(DateUtil.getYMDHMSTime() + "   , basic=" + basic + "   , threadName=" + Thread.currentThread().getId());
                 break;
             }
