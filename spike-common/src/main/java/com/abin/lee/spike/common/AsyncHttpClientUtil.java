@@ -420,12 +420,11 @@ public class AsyncHttpClientUtil {
 //        String resultGet = httpGet(httpGetUrl);
 //        System.out.println("Executing resultGet: "+ resultGet);
 
-        String httpPostUrl1 = "http://python.loan.com/rules/risk_tip";
+        String httpPostUrl1 = "http://www.abc.com/border/wall";
         Map<String, String> request1 = new HashMap<String, String>();
-        request1.put("Cookie", "rules_session_id=64b713c52c7511e6a4519801a7928995");
-        request1.put("RRDSource", "haohuan");
-        String input = "{\"uid\":\"1\",\"bank_cards\":[\"622123412341234\"],\"mobiles\":[\"15088741234\"],\"name\":\"樊令爱\",\"id_card\":\"320322197308222517\",\"ips\":[\"222.222.222.222\"]}";
-        String result1 = AsyncHttpClientUtil.getInstance().httpPost(input, httpPostUrl1,request1);
+        request1.put("Cookie", "rule_id=64b713c52c7511e6a4519801a7928995");
+        String input = "{\"uid\":\"1\",\"ips\":[\"222.222.222.222\"]}";
+        String result1 = httpPost(input, httpPostUrl1,request1);
         System.out.println("Executing result1: "+ result1);
 
     }
