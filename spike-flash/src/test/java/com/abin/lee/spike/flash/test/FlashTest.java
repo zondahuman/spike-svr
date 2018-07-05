@@ -1,7 +1,6 @@
 package com.abin.lee.spike.flash.test;
 
-import com.abin.lee.spike.common.HttpClientUtil;
-import org.apache.commons.lang3.RandomStringUtils;
+import com.abin.lee.spike.common.util.HttpClientUtil;
 import org.apache.http.Consts;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;

@@ -1,6 +1,6 @@
 package com.abin.lee.spike.conc.test;
 
-import com.abin.lee.spike.common.DateUtil;
+import com.abin.lee.spike.common.util.DateUtil;
 import lombok.Getter;
 import lombok.Setter;
 

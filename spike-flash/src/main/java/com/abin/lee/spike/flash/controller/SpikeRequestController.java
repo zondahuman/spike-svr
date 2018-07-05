@@ -1,16 +1,12 @@
 package com.abin.lee.spike.flash.controller;
 
-import com.abin.lee.spike.common.JsonUtil;
+import com.abin.lee.spike.common.util.JsonUtil;
 import com.abin.lee.spike.flash.model.SpikeModel;
-import com.abin.lee.spike.flash.service.DistributeLockService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.annotation.Resource;
 
 /**
  * Created by abin on 2018/6/17.

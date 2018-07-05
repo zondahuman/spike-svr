@@ -1,4 +1,4 @@
-package com.abin.lee.spike.common;
+package com.abin.lee.spike.common.util;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;

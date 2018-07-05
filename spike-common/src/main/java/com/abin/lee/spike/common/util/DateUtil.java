@@ -1,4 +1,4 @@
-package com.abin.lee.spike.common;
+package com.abin.lee.spike.common.util;
 
 
 import org.apache.commons.lang3.time.DateFormatUtils;

@@ -1,6 +1,6 @@
 package com.abin.lee.spike.patch.test;
 
-import com.abin.lee.spike.common.HttpClientUtil;
+import com.abin.lee.spike.common.util.HttpClientUtil;
 import org.apache.http.Consts;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;

@@ -1,4 +1,4 @@
-package com.abin.lee.spike.common;
+package com.abin.lee.spike.common.util;
 
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;

@@ -1,4 +1,4 @@
-package com.abin.lee.spike.common;
+package com.abin.lee.spike.common.util;
 
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -99,6 +99,7 @@ public class AsyncHttpClientUtil {
 //                    .setProxy(new HttpHost("localhost", 8889))
                     .setDefaultRequestConfig(getDefaultRequestConfig())
                     .build();
+            httpAsyncClient.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -297,7 +298,6 @@ public class AsyncHttpClientUtil {
     public static String httpPost(Map<String, String> request, String httpUrl){
         String result = "";
         CloseableHttpAsyncClient httpAsyncClient = getHttpAsyncClient();
-        httpAsyncClient.start();
         try {
             if(MapUtils.isEmpty(request))
                 throw new Exception("请求参数不能为空");
@@ -327,7 +327,6 @@ public class AsyncHttpClientUtil {
     public static String httpPost(String json, String httpUrl, Map<String, String> headers){
         String result = "";
         CloseableHttpAsyncClient httpAsyncClient = getHttpAsyncClient();
-        httpAsyncClient.start();
         try {
             if(StringUtils.isBlank(json))
                 throw new Exception("请求参数不能为空");
@@ -358,7 +357,6 @@ public class AsyncHttpClientUtil {
     public static String httpGet(String httpUrl, Map<String, String> headers) {
         String result = "";
         CloseableHttpAsyncClient httpAsyncClient = getHttpAsyncClient();
-        httpAsyncClient.start();
         try {
             HttpGet httpGet = new HttpGet(httpUrl);
             System.out.println("Executing request: " + httpGet.getRequestLine());
@@ -387,7 +385,6 @@ public class AsyncHttpClientUtil {
     public static String httpGet(String httpUrl) {
         String result = "";
         CloseableHttpAsyncClient httpAsyncClient = getHttpAsyncClient();
-        httpAsyncClient.start();
         try {
             HttpGet httpGet = new HttpGet(httpUrl);
             System.out.println("Executing request: " + httpGet.getRequestLine());
